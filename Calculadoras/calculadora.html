@@ -119,41 +119,43 @@
         }
     
        else {
+        
         //Suposição 225 litros de perda
         if(qtdLitros == 225) {
-            div_exibir.innerHTML= `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > ${Barril225qtdPerdida10pct.toFixed(2)}R$ </span>
+            div_exibir.innerHTML= `Com ${qtdBarris} barris em ${qtdMeses} consegui analisar que você perde: <span style ="color:#ff0000" > ${Barril225qtdPerdida10pct.toFixed(2)}R$ </span>
 
-            em prejuízo em ${qtdMeses} mês, com a nossa solução você só vai perder somente: <span style = "color: lime"> ${lucrosEmpresas225L}R$ </span>`
+            em prejuízo, com a nossa solução você só vai perder somente: <span style = "color: lime"> ${lucrosEmpresas225L}R$ </span>`
 
             if(qtdMeses>=2) {
-                div_exibir.innerHTML= `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > ${Barril225qtdPerdida10pct.toFixed(2)}R$ </span>
+                div_exibir.innerHTML= `Com ${qtdBarris} barris em ${qtdMeses} consegui analisar que você perde: <span style ="color:#ff0000" > ${Barril225qtdPerdida10pct.toFixed(2)}R$ </span>
 
-            em prejuízo em ${qtdMeses} meses, com a nossa solução você só vai perder : <span style = "color: lime"> ${lucrosEmpresas225L}R$ </span> `
+            em prejuízo, com a nossa solução você só vai perder somente: <span style = "color: lime"> ${lucrosEmpresas225L}R$ </span>`
             }
         }
 
 
         //Suposição 100 litros de perda
         if(qtdLitros == 100) {
-            div_exibir.innerHTML= `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > ${Barril100qtdPerdida10pct.toFixed(2)}R$ </span>
+            div_exibir.innerHTML= `Com ${qtdBarris} barris em ${qtdMeses} consegui analisar que você perde: <span style ="color:#ff0000" > ${Barril100qtdPerdida10pct.toFixed(2)}R$ </span>
 
-            em prejuízo em ${qtdMeses} mês, com a nossa solução você deixara de perder <span style = "color: lime"> ${lucrosEmpresas100L}R$ </span>`
+            em prejuízo, com a nossa solução você só vai perder somente: <span style = "color: lime"> ${lucrosEmpresas100L}R$ </span>`
+
             if(qtdMeses>=2) {
-                div_exibir.innerHTML= `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > ${Barril100qtdPerdida10pct.toFixed(2)}R$ </span>
+                div_exibir.innerHTML= `Com ${qtdBarris} barris em ${qtdMeses} consegui analisar que você perde: <span style ="color:#ff0000" > ${Barril100qtdPerdida10pct.toFixed(2)}R$ </span>
 
-            em prejuízo em ${qtdMeses} meses, com a nossa solução você só vai perder :  <span style = "color: lime"> ${lucrosEmpresas100L}R$ </span>`
+            em prejuízo, com a nossa solução você só vai perder somente: <span style = "color: lime"> ${lucrosEmpresas100L}R$ </span>`
             }
         }
 
        //Suposição 50 litros de perda     
     if(qtdLitros == 50) {
-            div_exibir.innerHTML= `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > ${Barril50qtdPerdida10pct.toFixed(2)}R$ </span>
+        div_exibir.innerHTML= `Com ${qtdBarris} barris em ${qtdMeses} consegui analisar que você perde: <span style ="color:#ff0000" > ${Barril50qtdPerdida10pct.toFixed(2)}R$ </span>
 
-            em prejuízo em ${qtdMeses} mês, com a nossa solução você deixara de perder <span style = "color: lime"> ${lucrosEmpresas50L}R$ </span>`
+        em prejuízo, com a nossa solução você só vai perder somente: <span style = "color: lime"> ${lucrosEmpresas50L}R$ </span>`
             if(qtdMeses>=2) {
-                div_exibir.innerHTML= `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > ${Barril50qtdPerdida10pct.toFixed(2)}R$ </span>
+                div_exibir.innerHTML= `Com ${qtdBarris} barris em ${qtdMeses} consegui analisar que você perde: <span style ="color:#ff0000" > ${Barril50qtdPerdida10pct.toFixed(2)}R$ </span>
 
-            em prejuízo em ${qtdMeses} meses, com a nossa solução você só vai perder :<span style = "color: lime"> ${lucrosEmpresas50L}R$ </span>`
+        em prejuízo, com a nossa solução você só vai perder somente: <span style = "color: lime"> ${lucrosEmpresas50L}R$ </span>`
             }
         }
 } }

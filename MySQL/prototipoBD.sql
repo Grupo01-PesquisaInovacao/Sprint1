@@ -10,55 +10,71 @@
 CREATE DATABASE projetoVinho;
 USE projetoVinho;
 
-CREATE TABLE tbFuncionario (
+CREATE TABLE Funcionario (
 idFuncionario INT PRIMARY KEY auto_increment,
-nomeFuncionario VARCHAR(50),
-cpfFuncionario CHAR(15),
-emailFuncionario VARCHAR(30),
-senhaFuncionario VARCHAR (64),
-dtNascFuncionario DATE,
-cargo VARCHAR (30)
+nomeFuncionario  VARCHAR(50) not null,
+cpfFuncionario CHAR(15) unique,
+emailFuncionario VARCHAR(30) not null,
+senhaFuncionario VARCHAR (64) not null,
+dtNascFuncionario DATE not null
 );
 
 
-CREATE TABLE tbEmpresa (
+
+
+CREATE TABLE Empresa (
 idEmpresa INT PRIMARY KEY auto_increment,
-nomeFantasia VARCHAR(40),
-cnpjEmpresa VARCHAR(20),
-emailEmpresa VARCHAR(30),
-telefoneEmpresa VARCHAR(11)
+nomeEmpresa VARCHAR(40) not null,
+nomeFantasia VARCHAR(40) not null,
+cnpjEmpresa CHAR(14) unique not null,
+emailEmpresa VARCHAR(30) unique not null
 );
 
-CREATE TABLE tbEnderecoEmpresa(
+create table telefoneEmpresa (
+idTelefone int primary key auto_increment,
+telefone char(15));
+
+
+
+
+CREATE TABLE EnderecoEmpresa(
 idEnderecoEmpresa INT PRIMARY KEY auto_increment,
-logradouro VARCHAR(50),
-numeroLogradouro VARCHAR (4),
+logradouro VARCHAR(50) unique not null,
+numeroLogradouro VARCHAR (4) not null,
 complemento VARCHAR(30),
-cep CHAR(11),
-bairro VARCHAR(30),
-cidade VARCHAR(30),
+cep CHAR(11) unique,
+bairro VARCHAR(30) not null ,
+cidade VARCHAR(30)unique not null,
 uf CHAR(2)
 );
 
-CREATE TABLE tbSensor(
+
+
+CREATE TABLE Sensor(
 idSensor INT PRIMARY KEY auto_increment,
 nomeSensor VARCHAR (30)
 );
 
-CREATE TABLE tbRegSensor (
+
+
+
+CREATE TABLE RegSensor (
 idRegSensor INT PRIMARY KEY auto_increment,
 temperaturaSensor INT,
 umidadeSensor DECIMAL (3,2)
 );
 
 
-CREATE TABLE tbBarril(
+
+CREATE TABLE Barril(
 idBarril INT PRIMARY KEY auto_increment,
 tipoVinho VARCHAR (15),
 qntBarril INT
 );
 
-CREATE TABLE tbSetor(
+
+
+CREATE TABLE Setor(
 idSetor INT PRIMARY KEY auto_increment,
 nomeSetor VARCHAR(20)
 );
