@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro - WineCare</title>
+</head>
+
+<body>
+    Quantos barris você produz? <input type="text" id="ipt_qtdBarril">
+
+    <br>
+
+    Quantos barris você perde por conta de armazenamento indevido do seu produto? <input type="text"
+        id="ipt_qtdPerdaBarril">
+
+    <br>
+
+    Quantos litros compõem um barril seu?
+    <select id="list_qtdLitroBarril">
+        <option value=""></option>
+        <option value=225>225L</option>
+        <option value=100>100L</option>
+        <option value=50>50L</option>
+    </select>
+
+    <br>
+
+    Quantos sensores você pretende comprar? <input type="text" id="ipt_qtdSensores">
+
+    <br>
+
+    Qual é seu tempo de preferência, em meses, para a duração da nossa parceria? <input type="text" id="ipt_contrato">
+
+    <br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="mensagem">
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function calcular() {
+        var qtdBarril = Number(ipt_qtdBarril.value);
+        var qtdPerdaBarril = Number(ipt_qtdPerdaBarril.value);
+        var qtdLitroBarril = Number(list_qtdLitroBarril.value)
+        var qtdSensores = Number(ipt_qtdSensores.value);
+        var contrato = Number(ipt_contrato.value);
+
+        var precoBarril50 = 270; // Dados encontrados no site "https://vinhodofrade.com.br/website/tabela_frade2.htm"
+        var precoBarril100 = 325; //Dados encontrados no site "https://vinhodofrade.com.br/website/tabela_frade2.htm"
+
+        var precoBarril225 = 731.25; // Preço do barril de 100L * 2 = 650 / 200L (Dois barris de 100L) = 3.25 * 25 (Litros que faltam para completar 225L) 
+        // = 81.25 + 650 = 731.25
+
+        var valorSensor = 15; // Valor cobrado por cada sensor (Pesquisas de mercado mostram que este valor se encontra entre R$12,00 e 17,00);
+        var valorMensal = 3000; //Valor de instalação + manutenção dos sensores + tecnologias que oferecemos (dashboard, gestão de processos, etc).
+
+        var precoPerdaBarril225 = qtdPerdaBarril * precoBarril225 * contrato; // Preço da perda do barril de 225L por mês.
+        var precoPerdaBarril100 = qtdPerdaBarril * precoBarril100 * contrato; // Preço da perda do barril de 100L por mês.
+        var precoPerdaBarril50 = qtdPerdaBarril * precoBarril50 * contrato; // Preço da perda do barril de 50L por mês.
+
+        var valorTotalSensor = valorSensor * qtdSensores; // Valor total dos sensores pedidos pelo cliente.
+        var valorTotalContrato = valorMensal * contrato; // Valor total do contrato, de acordo com o tempo que o cliente decidiu ficar conosco.
+        var valorCobrado = valorTotalSensor + valorTotalContrato; // Valor que é cobrado da nossa parte para o bom andamento da parceria.
+
+        var prejuizoParceria225 = (precoPerdaBarril225 * 0.2) + valorTotalContrato + valorTotalSensor; // Prejuízo do nosso cliente após a parceria, assumindo que os barris dele sejam de 225L. Esperamos uma redução de ao menos 80% das perdas do cliente. Este valor inclui o valor do contrato e dos sensores.
+
+        var prejuizoParceria100 = (precoPerdaBarril100 * 0.2) + valorTotalContrato + valorTotalSensor; // Prejuízo do nosso cliente após a parceria, assumindo que os barris dele sejam de 100L. Esperamos uma redução de ao menos 80% das perdas do cliente. Este valor inclui o valor do contrato e dos sensores.
+
+        var prejuizoParceria50 = (precoPerdaBarril50 * 0.2) + valorTotalContrato + valorTotalSensor; // Prejuízo do nosso cliente após a parceria, assumindo que os barris dele sejam de 50L. Esperamos uma redução de ao menos 80% das perdas do cliente. Este valor inclui o valor do contrato e dos sensores.
+
+
+
+        if (qtdLitroBarril == 225) {
+            mensagem.innerHTML = `Segundo nossas projeções, você têm um prejuízo de R$${precoPerdaBarril225},00 em ${contrato} mês(es). Utilizando nossa tecnologia, você passa a perder somente R$${prejuizoParceria225},00. <br> (Incluso valor do contrato).`;
+        }
+
+        if (qtdLitroBarril == 100) {
+            mensagem.innerHTML = `Segundo nossas projeções, você têm um prejuízo de R$${precoPerdaBarril100},00 em ${contrato} mês(es). Utilizando nossa tecnologia, você passa a perder somente R$${prejuizoParceria100},00. <br> (Incluso valor do contrato).`;
+        }
+
+        if (qtdLitroBarril == 50) {
+            mensagem.innerHTML = `Segundo nossas projeções, você têm um prejuízo de R$${precoPerdaBarril50},00 em ${contrato} mês(es). Utilizando nossa tecnologia, você passa a perder somente R$${prejuizoParceria50},00. <br> (Incluso valor do contrato).`;
+        }
+
+    }
+
+</script>

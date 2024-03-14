@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculadora(igorchu).css">
+</head>
+
+<body>
+    <div class="container_pai">
+        <h1>+ Calculadora Financeira</h1>
+        <br>
+        <div class="container_calculadora">
+            Insira a quantidade de barris que existem atualmente em sua vinícola: (min:35)
+            <input type="number" id="inputQntdBarril"> <br>
+            Selecione a quantidade de litros por barril:
+            <select id="selectQntdLitros">
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="225">225</option>
+            </select><br>
+            Insira a quantidade de barris que você perde por má amarzenagem:
+            <input type="number" min=35 id="inputQtdPerdida"> <br>
+            Insira a quantidade de sensores que você deseja:
+            <input type="number" id="inputSensores"> <br>
+            Insira a quantidade de meses que você deseja ficar com a gente:
+            <input type="number" id="inputMeses"> <br>
+            <button onclick="Calcular()">Calcular</button>
+        </div>
+        <div id="div_exibir" class="div_mensagem">
+        </div>
+    </div>
+</body>
+<script>
+    function Calcular() {
+        var qtdBarris = Number(inputQntdBarril.value);
+        var qtdSensores = Number(inputSensores.value);
+        var qtdLitros = Number(selectQntdLitros.value);
+        var qtdMeses = Number(inputMeses.value);
+        var qtdPerdida = Number(inputQtdPerdida.value);
+
+        var valorSensor = 34;
+        var valorMãoDeObra = 250;
+        var valorMensal = 1000;
+
+        var percentualPerdido = qtdPerdida / qtdBarris;
+
+        var BarrilDeVinho225L = 2057;
+        var BarrilDeVinho100L = 900;
+        var BarrilDeVinho50L = 515;
+
+        var CustosEmpresas = (valorSensor * qtdSensores) + valorMãoDeObra + (valorMensal * qtdMeses);
+
+        var Barril225qtdPerdida10pct = (qtdBarris * BarrilDeVinho225L * qtdMeses) * percentualPerdido;
+        var Barril100qtdPerdida10pct = (qtdBarris * BarrilDeVinho100L * qtdMeses) * percentualPerdido;
+        var Barril50qtdPerdida10pct = (qtdBarris * BarrilDeVinho50L * qtdMeses) * percentualPerdido;
+
+        var lucrosEmpresas225L = (Barril225qtdPerdida10pct - Barril225qtdPerdida10pct) + CustosEmpresas;
+        var lucrosEmpresas100L = (Barril100qtdPerdida10pct - Barril100qtdPerdida10pct) + CustosEmpresas;
+        var lucrosEmpresas50L = (Barril50qtdPerdida10pct - Barril50qtdPerdida10pct) + CustosEmpresas;
+
+
+        if (qtdBarris == '') {
+            alert(`A quantidade de barris não pode ser nula`);
+        }
+        else if (qtdBarris < 35) {
+            alert(`A quantidade de barris não pode ser menor que 35`);
+        }
+        else if (qtdPerdida == '') {
+            alert(`A quantidade perdida não pode ser nula`);
+        }
+        else if (qtdSensores == '') {
+            alert(`A quantidade de sensores não pode ser nula`);
+        }
+        else if (qtdMeses == '') {
+            alert(`A quantidade de meses não pode ser nula`);
+        };
+
+        if (qtdLitros == 225) {
+            div_exibir.innerHTML = `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > R$${Barril225qtdPerdida10pct.toFixed(2)}</span>
+            em prejuízo em ${qtdMeses} mês, com a nossa solução você só vai perder somente: <span style = "color: lime"> R$${lucrosEmpresas225L}</span>`
+
+            if (qtdMeses >= 2) {
+                div_exibir.innerHTML = `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > R$${Barril225qtdPerdida10pct.toFixed(2)} </span>
+            em prejuízo em ${qtdMeses} meses, com a nossa solução você só vai perder : <span style = "color: lime"> R$${lucrosEmpresas225L} </span> `
+            }
+        };
+
+
+        if (qtdLitros == 100) {
+            div_exibir.innerHTML = `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > R$${Barril100qtdPerdida10pct.toFixed(2)} </span>
+            em prejuízo em ${qtdMeses} mês, com a nossa solução você deixara de perder <span style = "color: lime"> R$${lucrosEmpresas100L} </span>`
+            if (qtdMeses >= 2) {
+                div_exibir.innerHTML = `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > R$${Barril100qtdPerdida10pct.toFixed(2)} </span>
+            em prejuízo em ${qtdMeses} meses, com a nossa solução você só vai perder :  <span style = "color: lime"> R$${lucrosEmpresas100L} </span>`
+            }
+        };
+  
+        if (qtdLitros == 50) {
+            div_exibir.innerHTML = `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > R$${Barril50qtdPerdida10pct.toFixed(2)} </span>
+            em prejuízo em ${qtdMeses} mês, com a nossa solução você deixara de perder <span style = "color: lime"> R$${lucrosEmpresas50L} </span>`
+            if (qtdMeses >= 2) {
+                div_exibir.innerHTML = `Segundo meus calculos você está perdendo: <span style ="color:#ff0000" > R$${Barril50qtdPerdida10pct.toFixed(2)} </span>
+            em prejuízo em ${qtdMeses} meses, com a nossa solução você só vai perder :<span style = "color: lime"> R$${lucrosEmpresas50L} </span>`
+            }
+        };
+    }
+</script>
+</html>

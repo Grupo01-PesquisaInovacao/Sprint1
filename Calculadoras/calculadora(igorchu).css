@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    background-color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container_pai {
+    display: flex;
+    align-items: flex-start;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container_pai h1 {
+    color: #000;
+    margin-left: 15px;
+}
+
+.container_calculadora {
+    margin-left: 25px;
+    background-color: transparent;
+    border-radius: 15px;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    width: 72%;
+    height: 50%;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    flex-direction: column;
+}
+
+.container_calculadora select {
+    color: #fff;
+    border-radius: 15px;
+    background-color: #8D1750;
+    height: 45px;
+    padding: 5px;
+    width: 85px;
+    font-size: 16px;
+    border: 3px solid #E9E9E9;
+}
+
+.container_calculadora input {
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #8D1750;
+    color: white;
+    font-size: 16px;
+    border: 3px solid #E9E9E9;
+}
+
+.container_calculadora button {
+    margin-top: 5px;
+    width: 200px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #8D1750;
+    color: white;
+    font-size: 20px;
+    border-radius: 20px;
+}
+
+
+.container_calculadora button:hover {
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    transition: 0.8s;
+}
+
+.div_mensagem {
+    color: #000;
+    font-size: 21px;
+    width: 100%;
+    margin-top: 25px;
+}
