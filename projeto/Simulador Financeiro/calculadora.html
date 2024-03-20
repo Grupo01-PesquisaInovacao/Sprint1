@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body">
+
+    <br>
+    <h1 class="titulo">WineCare</h1>
+    <div class="box">
+        Insira a quantidade de barris que possui em sua vinícola:
+        <input type="number" class="inputs" id="input_barris"><br>
+
+        Insira a capacidade de cada barril (em Litros):
+        <input type="number" class="inputs" id="input_litros"><br>
+
+        Insira o quanto você gasta para produzir o litro do vinho (em reais):
+        <input type="number" class="inputs" id="input_valorLitro"><br>
+
+        Insira a quantidade de barris que você perde por conta da má armazenagem:
+        <input type="number" class="inputs" id="input_perda"><br>
+
+        Insira a quantidade de meses que deseja ficar com a gente:
+        <input type="number" class="inputs" id="input_meses"><br>
+    </div>
+    <a href="#divMsg"> <button class="button" onclick="result()" href="#divMsg">Calcular</button></a>
+
+    <div class="divMsg" id="divMsg"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    // será um sensor por barril
+    var sensor = 1
+
+    // valor do sensor dht-11 R$ 16.95
+    var valorSensor = 34
+
+    // valor da nossa instalação por sensor
+    var valorInstalação = 12
+
+    // valor total por sensor
+    var totalSensor = 46
+
+    // valor para nós manter os sensores funcionando
+    var valorMensal = 1400
+
+    function result() {
+
+        // variáveis das inputs
+        var barris = Number(input_barris.value)
+        var litros = Number(input_litros.value)
+        var meses = Number(input_meses.value)
+        var qtdBarrilPerda = Number(input_perda.value)
+        var valorLitro = Number(input_valorLitro.value)
+
+        // calcula a porcentagem de perdas dos barris
+        var porcentagem = qtdBarrilPerda / barris * 100
+
+        // calcula a quantidade de perdas dos litros
+        var perdaLitros = qtdBarrilPerda * litros
+
+        // calcula o quanto (em reais) está perdendo
+        var perdaPreco = perdaLitros * valorLitro
+
+        // calcula a quantidade de sensores
+        var qtdSensor = sensor * barris
+
+        // calcula o custo de manter os sensores funcionando 
+        var custoMensal = valorMensal * meses
+
+        // calcula o preco de todos os sensores
+        var precoSensor = qtdSensor * valorSensor
+
+        // calcula o preco da isntalação de todos os sensores
+        var precoInsatalcao = valorInstalação * qtdSensor
+
+        // custo pelos nossos serviços
+        var custoEmpresa = custoMensal + precoSensor + precoInsatalcao
+
+        // calcula a quantidade de litros de todos os barris
+        var qtdLitros = barris * litros
+
+        // calcula quanto ganharia com nossa solução
+        var valorSemPerdas = qtdLitros * valorLitro
+        var valorEstimado = valorSemPerdas * 0.95
+
+        if (porcentagem <= 50) {
+            var n1 = 50
+            var n2 = 70
+            var perdaEstimada = perdaPreco * 0.5
+            var perdaEstimada2 = perdaPreco * 0.7
+        } else {
+            var n1 = 30
+            var n2 = 50
+            var perdaEstimada = perdaPreco * 0.3
+            var perdaEstimada2 = perdaPreco * 0.5
+        }
+        if (meses == 1) {
+            var mes = "mês"
+        } else {
+            var mes = "meses"
+        }
+
+        // soma dos nossos custos e o que cliente vai deixar de perder
+        var soma = perdaPreco - perdaEstimada2 + custoEmpresa
+
+        // o quanto o cliente vai economizar no final de tudo
+        var conclusao = perdaPreco - soma
+
+        divMsg.innerHTML = `
+        <p>Por conta da má armazenagem você perde <b>${qtdBarrilPerda}</b> barris de <b>${barris}</b> (${porcentagem.toFixed(2)}%), ou seja, um prejuízo de <span class="red">R$${perdaPreco} reais<span></p>
+
+        <p>Com a nossa solução vamos diminuir suas perdas de <b>${n1}%</b> a <b>${n2}%</b> (até <span class="red">R$${perdaEstimada2} reais</span>)</p>
+
+        <p>Será cobrado um valor fixo de <b>R$ ${totalSensor}</b> (custo do sensor + valor da nossa instalação) por barril.<br> 
+        Somado com o custo de <b>R$ ${valorMensal}</b> por mês para manter tudo funcionando, iremos cobrar apenas <span class="green">R$${custoEmpresa} reais</span> durante <b>${meses}</b> ${mes}</p>
+
+        <p>Somando nossos custos mais o que você vai deixar de perder resulta em <span class="red">R$${soma} reais</span>, portanto você economizaria <span class="green">R$${conclusao} reais</span></p>`
+
+
+    }
+</script>
