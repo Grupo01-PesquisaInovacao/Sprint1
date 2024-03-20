@@ -1,0 +1,28 @@
+.red-text{
+    color: red;
+}
+.green-text{
+    color: green;
+}
+.body{
+    text-align: center;
+    background-color: aquamarine;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+
+}
+.button{
+    border-radius: 20px;
+    background-color: aqua;
+    color: black;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+.titulo-2{
+    font-size: 30px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+
+}
