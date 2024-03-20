@@ -45,10 +45,7 @@
     var valorSensor = 34
 
     // valor da nossa instalação por sensor
-    var valorInstalação = 12
-
-    // valor total por sensor
-    var totalSensor = 46
+    var valorInstalacao = 12
 
     // valor para nós manter os sensores funcionando
     var valorMensal = 1400
@@ -61,6 +58,9 @@
         var meses = Number(input_meses.value)
         var qtdBarrilPerda = Number(input_perda.value)
         var valorLitro = Number(input_valorLitro.value)
+
+        // custo total do sensor por barril
+        var totalSensor = valorInstalacao + valorSensor
 
         // calcula a porcentagem de perdas dos barris
         var porcentagem = qtdBarrilPerda / barris * 100
@@ -81,10 +81,10 @@
         var precoSensor = qtdSensor * valorSensor
 
         // calcula o preco da isntalação de todos os sensores
-        var precoInsatalcao = valorInstalação * qtdSensor
+        var precoInsatalacao = valorInstalacao * qtdSensor
 
         // custo pelos nossos serviços
-        var custoEmpresa = custoMensal + precoSensor + precoInsatalcao
+        var custoEmpresa = custoMensal + precoSensor + precoInsatalacao
 
         // calcula a quantidade de litros de todos os barris
         var qtdLitros = barris * litros
